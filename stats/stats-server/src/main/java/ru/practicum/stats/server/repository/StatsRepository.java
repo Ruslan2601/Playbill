@@ -20,7 +20,6 @@ public interface StatsRepository extends JpaRepository<Event, Long> {
             "ORDER BY COUNT(ip) DESC")
     List<Statistic> getStatisticsAnyIp(@Param("start") LocalDateTime start, @Param("end") LocalDateTime end, @Param("uris") List<String> uris);
 
-
     @Query(value = "SELECT new ru.practicum.stats.server.model.Statistic(app, uri, COUNT(DISTINCT(ip))) \n" +
             "FROM Event \n" +
             "WHERE uri IN (:uris) \n" +

@@ -17,15 +17,12 @@ import java.time.LocalDateTime;
 public class EventRequest {
     @NotBlank(message = "app пустой или null")
     private String app;
-
     @NotBlank(message = "uri пустой или null")
     private String uri;
-
     @NotBlank(message = "ip пустой или null")
     private String ip;
-
     @NotNull(message = "timestamp null")
     @PastOrPresent(message = "timestamp в будущем")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime timestamp;
+    private LocalDateTime timestamp;
 }

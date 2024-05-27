@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.practicum.main.service.exception.model.ConflictException;
 import ru.practicum.main.service.exception.model.NotExistException;
 import ru.practicum.main.service.exception.response.ApiError;
+import ru.practicum.stats.exception.ServerResponseException;
 
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
@@ -130,6 +131,22 @@ public class ExceptionHandlerController {
                 exception.getMessage(),
                 "Конфликт параметров",
                 HttpStatus.CONFLICT,
+                LocalDateTime.now());
+
+        log.warn(response.toString());
+
+        return response;
+
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler
+    public ApiError statsServerProblem(ServerResponseException exception) {
+        ApiError response = new ApiError(
+                Arrays.toString(exception.getStackTrace()),
+                exception.getMessage(),
+                "Сервер статистики не смог обработать информацию",
+                HttpStatus.BAD_REQUEST,
                 LocalDateTime.now());
 
         log.warn(response.toString());

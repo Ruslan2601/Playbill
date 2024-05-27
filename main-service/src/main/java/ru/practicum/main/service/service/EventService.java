@@ -22,7 +22,7 @@ import ru.practicum.main.service.repository.CategoryRepository;
 import ru.practicum.main.service.repository.EventRepository;
 import ru.practicum.main.service.repository.UserRepository;
 import ru.practicum.main.service.specification.EventSpecification;
-import ru.practicum.stats.StatsClient;
+import ru.practicum.stats.client.StatsClient;
 import ru.practicum.stats.dto.EventRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,7 +82,7 @@ public class EventService {
         event.setViews(statsClient.getStatistics(event.getCreatedOn(),
                 LocalDateTime.now(),
                 List.of(request.getRequestURI()),
-                "true").get(0).getHits());
+                true).get(0).getHits());
 
         repository.save(event);
 
