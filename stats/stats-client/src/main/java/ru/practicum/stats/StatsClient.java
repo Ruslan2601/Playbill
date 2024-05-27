@@ -35,7 +35,7 @@ public class StatsClient extends BaseClient {
         return responseEntity.getBody();
     }
 
-    public List<StatisticResponse> getStatistics(LocalDateTime start, LocalDateTime end, String[] uris, String unique) {
+    public List<StatisticResponse> getStatistics(LocalDateTime start, LocalDateTime end, List<String>  uris, String unique) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         Map<String, Object> map = Map.of(
                 "start", start.format(formatter),

@@ -1,5 +1,30 @@
 version: '3.1'
 services:
+  main-server:
+    build: ./main-service
+    image: ewm-main-service
+    container_name: ewm-main-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - main-db
+    environment:
+      - SERVER_PORT=8080
+      - STATS-SERVER-URL=http://stats-server:9090
+      - DATASOURCE_URL=jdbc:postgresql://db:5433/explore-with-me
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+
+  main-db:
+    image: postgres:14-alpine
+    container_name: ewm-main-database
+    ports:
+      - "6542:5433"
+    environment:
+      - POSTGRES_DB=explore-with-me
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+
   stats-server:
     build: ./stats/stats-server
     image: ewm-stats-server
@@ -7,14 +32,14 @@ services:
     ports:
       - "9090:9090"
     depends_on:
-      - db
+      - stats-db
     environment:
       - SERVER_PORT=9090
       - DATASOURCE_URL=jdbc:postgresql://db:5432/explore-with-me
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
-  db:
+  stats-db:
     image: postgres:14-alpine
     container_name: ewm-database
     ports:
