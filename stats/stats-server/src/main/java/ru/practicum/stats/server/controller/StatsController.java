@@ -24,14 +24,14 @@ public class StatsController {
                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
                                                  @RequestParam(required = false) List<String> uris,
                                                  @RequestParam(defaultValue = "false") boolean unique) {
-        log.info("GET Запрос - getStatistics. start: {}, end: {}, uris: {}, unique: {} ===", start, end, uris, unique);
+        log.info("=== GET Запрос - getStatistics. start: {}, end: {}, uris: {}, unique: {} ===", start, end, uris, unique);
         return service.getStatistics(start, end, uris, unique);
     }
 
     @PostMapping("/hit")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(@RequestBody EventRequest eventRequest) {
-        log.info("POST Запрос - addEvent. EventRequest: {}", eventRequest);
+        log.info("=== POST Запрос - addEvent. EventRequest: {}", eventRequest);
         service.addEvent(eventRequest);
     }
 }
