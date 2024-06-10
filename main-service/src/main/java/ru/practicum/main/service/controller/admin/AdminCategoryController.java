@@ -29,7 +29,7 @@ public class AdminCategoryController {
     }
 
     @PatchMapping("/{catId}")
-    public CategoryResponse updateCategory(@Positive(message = "Поле catId не положительное или null") @PathVariable long catId,
+    public CategoryResponse updateCategory(@Positive(message = "Поле catId не положительное") @PathVariable long catId,
                                            @Valid @RequestBody NewCategoryRequest newCategoryRequest) {
         log.info("=== PATCH Запрос - updateCategory. catId: {}, newCategoryRequest: {} ===", catId, newCategoryRequest);
         return service.updateCategory(catId, newCategoryRequest);
@@ -37,7 +37,7 @@ public class AdminCategoryController {
 
     @DeleteMapping("/{catId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCategory(@Positive(message = "Поле catId не положительное или null") @PathVariable long catId) {
+    public void deleteCategory(@Positive(message = "Поле catId не положительное") @PathVariable long catId) {
         log.info("=== DELETE Запрос - deleteCategory. catId: {} ===", catId);
         service.deleteCategory(catId);
     }

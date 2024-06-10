@@ -40,7 +40,7 @@ public class AdminUserController {
 
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId) {
+    public void deleteUser(@Positive(message = "Поле userId не положительное") @PathVariable long userId) {
         log.info("=== DELETE Запрос - deleteUser. userId: {} ===", userId);
         service.deleteUser(userId);
     }

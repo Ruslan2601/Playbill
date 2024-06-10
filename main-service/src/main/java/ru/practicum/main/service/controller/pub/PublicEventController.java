@@ -42,7 +42,7 @@ public class PublicEventController {
     }
 
     @GetMapping("/{id}")
-    public EventFullResponse getEvent(@Positive(message = "Поле id не положительное или null") @PathVariable(name = "id") long eventId,
+    public EventFullResponse getEvent(@Positive(message = "Поле id не положительное") @PathVariable(name = "id") long eventId,
                                       HttpServletRequest request) {
         log.info("=== GET Запрос - getEvent. eventId: {}, HttpServletRequest {} ===", eventId, request);
         return service.getEventPublic(eventId, request);

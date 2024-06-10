@@ -38,7 +38,7 @@ public class AdminEventController {
     }
 
     @PatchMapping("/{eventId}")
-    public EventFullResponse updateEvent(@Positive(message = "Поле eventId не положительное или null") @PathVariable long eventId,
+    public EventFullResponse updateEvent(@Positive(message = "Поле eventId не положительное") @PathVariable long eventId,
                                          @Valid @RequestBody UpdateEventAdminRequest updateEventAdminRequest) {
         log.info("=== PATCH Запрос - updateEvent. eventId: {}, updateEventAdminRequest: {} ===", eventId, updateEventAdminRequest);
         return service.updateEventAdmin(eventId, updateEventAdminRequest);

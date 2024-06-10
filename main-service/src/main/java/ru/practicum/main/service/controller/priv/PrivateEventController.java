@@ -48,23 +48,23 @@ public class PrivateEventController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public EventFullResponse addEvent(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId,
+    public EventFullResponse addEvent(@Positive(message = "Поле userId не положительное") @PathVariable long userId,
                                       @Valid @RequestBody NewEventRequest newEventRequest) {
         log.info("=== POST Запрос - addEvent. userId: {}, newEventRequest: {} ===", userId, newEventRequest);
         return service.addEventUser(userId, newEventRequest);
     }
 
     @PatchMapping("/{eventId}")
-    public EventFullResponse updateEvent(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId,
-                                         @Positive(message = "Поле eventId не положительное или null") @PathVariable long eventId,
+    public EventFullResponse updateEvent(@Positive(message = "Поле userId не положительное") @PathVariable long userId,
+                                         @Positive(message = "Поле eventId не положительное") @PathVariable long eventId,
                                          @Valid @RequestBody UpdateEventUserRequest updateEventUserRequest) {
         log.info("=== PATCH Запрос - updateEvent. userId: {}, eventId: {} ===", userId, eventId);
         return service.updateEventUser(userId, eventId, updateEventUserRequest);
     }
 
     @PatchMapping("/{eventId}/requests")
-    public EventRequestStatusUpdateResponse updateRequestStatusOnEvent(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId,
-                                                                       @Positive(message = "Поле eventId не положительное или null") @PathVariable long eventId,
+    public EventRequestStatusUpdateResponse updateRequestStatusOnEvent(@Positive(message = "Поле userId не положительное") @PathVariable long userId,
+                                                                       @Positive(message = "Поле eventId не положительное") @PathVariable long eventId,
                                                                        @RequestBody EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
         log.info("=== PATCH Запрос - updateEvent. userId: {}, eventId: {}, eventRequestStatusUpdateRequest: {} ===", userId, eventId, eventRequestStatusUpdateRequest);
         return requestService.updateRequestStatusOnEvent(userId, eventId, eventRequestStatusUpdateRequest);

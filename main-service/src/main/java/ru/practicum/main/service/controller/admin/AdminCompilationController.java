@@ -30,7 +30,7 @@ public class AdminCompilationController {
     }
 
     @PatchMapping("/{compId}")
-    public CompilationResponse updateCompilation(@Positive(message = "Поле compId не положительное или null") @PathVariable long compId,
+    public CompilationResponse updateCompilation(@Positive(message = "Поле compId не положительное") @PathVariable long compId,
                                                  @Valid @RequestBody UpdateCompilationRequest updateCompilationRequest) {
         log.info("=== PATCH Запрос - updateCompilation. compId: {},  updateCompilationRequest: {} ===", compId, updateCompilationRequest);
         return service.updateCompilation(compId, updateCompilationRequest);
@@ -38,7 +38,7 @@ public class AdminCompilationController {
 
     @DeleteMapping("/{compId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCompilation(@Positive(message = "Поле compId не положительное или null") @PathVariable long compId) {
+    public void deleteCompilation(@Positive(message = "Поле compId не положительное") @PathVariable long compId) {
         log.info("=== DELETE Запрос - deleteCompilation. compId: {} ===", compId);
         service.deleteCompilation(compId);
     }
