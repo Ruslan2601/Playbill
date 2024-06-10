@@ -28,7 +28,7 @@ public class PublicCategoryController {
     }
 
     @GetMapping("/{catId}")
-    public CategoryResponse getCategory(@Positive(message = "Поле catId не положительное или null") @PathVariable long catId) {
+    public CategoryResponse getCategory(@Positive(message = "Поле catId не положительное") @PathVariable long catId) {
         log.info("=== GET Запрос - getCategory. catId: {} ===", catId);
         return service.getCategory(catId);
     }

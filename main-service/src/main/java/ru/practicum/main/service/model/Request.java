@@ -22,6 +22,7 @@ public class Request {
     private long eventId;
     @Column(name = "requester_id")
     private long requesterId;
+    @Enumerated(EnumType.STRING)
     private StateRequest status;
     private LocalDateTime created;
 }

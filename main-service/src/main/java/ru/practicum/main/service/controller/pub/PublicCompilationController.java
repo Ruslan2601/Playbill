@@ -28,7 +28,7 @@ public class PublicCompilationController {
     }
 
     @GetMapping("/{compId}")
-    public CompilationResponse getCompilation(@Positive(message = "Поле compId не положительное или null") @PathVariable long compId) {
+    public CompilationResponse getCompilation(@Positive(message = "Поле compId не положительное") @PathVariable long compId) {
         log.info("=== GET Запрос - getCompilation. compId: {} ===", compId);
         return service.getCompilation(compId);
     }

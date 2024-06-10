@@ -1,2 +1,6 @@
 # java-explore-with-me
-Template repository for ExploreWithMe project.
+
+### Main service database
+![](main-service/src/main/resources/DB.png)
+
+

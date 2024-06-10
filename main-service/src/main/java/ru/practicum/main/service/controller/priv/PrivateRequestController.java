@@ -21,22 +21,22 @@ public class PrivateRequestController {
     private final RequestService service;
 
     @GetMapping
-    public List<ParticipationRequestResponse> getRequests(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId) {
+    public List<ParticipationRequestResponse> getRequests(@Positive(message = "Поле userId не положительное") @PathVariable long userId) {
         log.info("=== GET Запрос - getRequests. userId: {} ===", userId);
         return service.getRequests(userId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ParticipationRequestResponse addRequest(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId,
-                                                   @Positive(message = "Поле eventId не положительное или null") @RequestParam long eventId) {
+    public ParticipationRequestResponse addRequest(@Positive(message = "Поле userId не положительное") @PathVariable long userId,
+                                                   @Positive(message = "Поле eventId не положительное") @RequestParam long eventId) {
         log.info("=== POST Запрос - addRequest. userId: {}, eventId: {} ===", userId, eventId);
         return service.addRequest(userId, eventId);
     }
 
     @PatchMapping("/{requestId}/cancel")
-    public ParticipationRequestResponse cancelRequest(@Positive(message = "Поле userId не положительное или null") @PathVariable long userId,
-                                                      @Positive(message = "Поле requestId не положительное или null") @PathVariable long requestId) {
+    public ParticipationRequestResponse cancelRequest(@Positive(message = "Поле userId не положительное") @PathVariable long userId,
+                                                      @Positive(message = "Поле requestId не положительное") @PathVariable long requestId) {
         log.info("=== GET Запрос - getRequests. userId: {}, requestId: {} ===", userId, requestId);
         return service.cancelRequest(userId, requestId);
     }
