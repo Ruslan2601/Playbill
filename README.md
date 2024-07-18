@@ -1,4 +1,4 @@
-# Explore With Me: дипломный проект
+# Explore With Me
 
 ## Идея проекта
 
