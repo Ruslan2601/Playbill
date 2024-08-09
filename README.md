@@ -1,4 +1,4 @@
-# Explore With Me
+# Playbill
 
 ## Идея проекта
 
